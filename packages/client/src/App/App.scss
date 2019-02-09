@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.App {
+    background-color: #ececec;
+    border: solid 1px grey;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: auto;
+    max-width: 800px;
+    position: relative;
+    width: 100%;
+}
