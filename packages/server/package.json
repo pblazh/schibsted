@@ -1,0 +1,30 @@
+{
+  "name": "schibsted-server",
+  "description": "Schibsted JS full-stack test app",
+  "repository": "https://github.com/pblazh/schibsted.git",
+  "author": "Pawel Blazejewski <pblazh@gmail.com>",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf build",
+    "build": "babel --source-maps --root-mode upward --ignore '**/*.test.js' src -d build",
+    "test": "jest",
+    "test:watch": "jest test --watchAll",
+    "start": "nodemon --exec babel-node ./src/index.js -- --source-maps --root-mode upward",
+    "serve": "node build/index.js"
+  },
+  "main": "./build/index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "nodemon": "^1.18.9",
+    "rimraf": "^2.6.3"
+  }
+}

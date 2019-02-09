@@ -1,0 +1,40 @@
+{
+  "description": "Schibsted JS full-stack test app",
+  "repository": "https://github.com/pblazh/schibsted.git",
+  "author": "Pawel Blazejewski <pblazh@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "wsrun --exclude-missing start",
+    "lint": "wsrun --exclude-missing lint",
+    "test": "wsrun --exclude-missing test",
+    "test:watch": "wsrun --exclude-missing test:watch",
+    "build": "wsrun --exclude-missing build"
+  },
+  "engines": {
+    "node": ">=8",
+    "yarn": ">=1.2.0 <2.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.4.2",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^23.6.0",
+    "prettier": "^1.16.4",
+    "wsrun": "^3.6.2"
+  }
+}
