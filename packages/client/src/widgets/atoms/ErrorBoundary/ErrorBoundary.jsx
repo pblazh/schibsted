@@ -21,12 +21,13 @@ ErrorBoundaryFallbackComponent.defaultProps = {
 export class ErrorBoundary extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    onError: PropTypes.func.isRequired,
-    FallbackComponent: PropTypes.node
+    onError: PropTypes.func,
+    FallbackComponent: PropTypes.func
   }
 
   static defaultProps = {
-    FallbackComponent: ErrorBoundaryFallbackComponent
+    FallbackComponent: ErrorBoundaryFallbackComponent,
+    onError: () => {}
   }
 
   state = {

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { mount, shallow } from 'enzyme'
 import React from 'react'
+import { mount, shallow } from 'enzyme'
 import { ErrorBoundary } from './ErrorBoundary'
 
 describe('ErrorBoundary', () => {

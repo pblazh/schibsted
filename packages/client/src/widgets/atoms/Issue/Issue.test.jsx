@@ -1,12 +1,13 @@
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import React from 'react'
 import Issue from './Issue'
 
 describe('Issue', () => {
   it('renders', () => {
-    const issue = shallow(
-      <Issue title="title" description="description" state="open" />
+    const issue = mount(
+      <Issue title="title text" description="description text" state="open" />
     )
-    expect(issue.text()).toEqual('$1')
+    expect(issue.text()).toContain('title text')
+    expect(issue.text()).toContain('description text')
   })
 })
