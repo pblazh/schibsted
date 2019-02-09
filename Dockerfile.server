@@ -1,0 +1,19 @@
+FROM mhart/alpine-node:11
+
+RUN mkdir -p /usr/src/app/packages/server
+
+WORKDIR /usr/src/app
+
+COPY package.json yarn.lock ./
+COPY packages/server/package.json ./packages/server/
+
+RUN yarn install --pure-lockfile
+
+COPY . .
+RUN yarn workspace schibsted-server run build
+
+COPY packages/server/src/issueTracker/db.json ./packages/server/build/issueTracker/db.json
+
+EXPOSE 5000
+
+CMD ["node", "./packages/server/build/index.js"]
