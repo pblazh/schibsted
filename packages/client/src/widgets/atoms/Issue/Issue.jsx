@@ -3,9 +3,13 @@ import React from 'react'
 
 import './Issue.scss'
 
-const IssueButton = ({type}) => {
+const IssueButton = ({ type, ...rest }) => {
   return (
-    <button type="button" className={`IssueButton IssueButton--${type}`}>
+    <button
+      {...rest}
+      type="button"
+      className={`IssueButton IssueButton--${type}`}
+    >
       {
         {
           open: 'assign',
@@ -21,7 +25,12 @@ IssueButton.propTypes = {
   type: PropTypes.oneOf(['open', 'pending', 'delete']).isRequired
 }
 
-const Issue = ({ title, description, state }) => (
+const Issue = ({
+  issue: { title, state, id, description },
+  remove,
+  pending,
+  closed
+}) => (
   <section className={`Issue Issue--${state}`}>
     <header className="Issue__header">
       <section className="Issue__title">
@@ -29,8 +38,13 @@ const Issue = ({ title, description, state }) => (
         {title}
       </section>
       <section className="Issue__actions">
-        {/(pending|open)/.test(state) && <IssueButton type={state} />}
-        <IssueButton type="delete" />
+        {/(pending|open)/.test(state) && (
+          <IssueButton
+            type={state}
+            onClick={() => (state === 'open' ? pending(id) : closed(id))}
+          />
+        )}
+        <IssueButton type="delete" onClick={() => remove(id)} />
       </section>
     </header>
     <section className="Issue__description">{description}</section>
@@ -38,9 +52,15 @@ const Issue = ({ title, description, state }) => (
 )
 
 Issue.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  state: PropTypes.oneOf(['open', 'pending', 'closed']).isRequired
+  issue: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    state: PropTypes.oneOf(['open', 'pending', 'closed']).isRequired
+  }).isRequired,
+  remove: PropTypes.func.isRequired,
+  closed: PropTypes.func.isRequired,
+  pending: PropTypes.func.isRequired
 }
 
 export default Issue

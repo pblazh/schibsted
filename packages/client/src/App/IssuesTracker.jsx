@@ -10,7 +10,11 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      fetch: issuesModule.actions.fetch
+      fetch: issuesModule.actions.fetch,
+      append: issuesModule.actions.append,
+      remove: issuesModule.actions.remove,
+      closed: issuesModule.actions.closed,
+      pending: issuesModule.actions.pending,
     },
     dispatch
   )
