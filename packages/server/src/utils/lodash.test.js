@@ -1,4 +1,4 @@
-import { equal, filter, without, replace, nextId } from './util'
+import { equal, filter, without, replace, nextId } from './lodash'
 
 const list = [
   { id: 0, key: 'value', common: true },

@@ -1,5 +1,8 @@
-import { filter, replace, nextId, without } from './util'
-import { read, save } from './db'
+import { filter, replace, nextId, without } from '../utils/lodash'
+import DB from '../utils/db'
+import changeState from './stateMachine';
+
+const { read, save } = DB('issues');
 
 export const STATES = {
   default: 'open',
@@ -8,23 +11,12 @@ export const STATES = {
   closed: 'closed'
 }
 
-const Issue = ({ title, description }) => ({
+export const Issue = ({ title, description }) => ({
   id: null,
   title,
   description,
   state: STATES.default
 })
-
-// state machine
-export const changeState = (state, issue) => {
-  if (
-    (issue && state === STATES.pending && issue.state === STATES.open) ||
-    (issue && state === STATES.closed && issue.state === STATES.pending)
-  ) {
-    return { ...issue, state }
-  }
-  return issue
-}
 
 const getOne = id => filter({ id: parseInt(id, 10) })
 const omit = id => without({ id })
