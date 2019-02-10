@@ -12,7 +12,7 @@ RUN yarn install --pure-lockfile
 COPY . .
 RUN yarn workspace schibsted-server run build
 
-COPY packages/server/src/issueTracker/db.json ./packages/server/build/issueTracker/db.json
+COPY packages/server/src/fixtures ./packages/server/build/fixtures
 
 EXPOSE 5000
 
